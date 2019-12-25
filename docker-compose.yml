@@ -29,6 +29,20 @@ services :
             - TAG=${WEBAPP_2_NAME}
             - SERVER_IP=${WEBAPP_2_IP}
 
+  webapp3:
+       container_name: "S3"
+       build:
+         context: ./webapp
+         dockerfile: Dockerfile
+       networks:
+         heig:
+           ipv4_address: 192.168.42.33
+       ports:
+         - "4002:3000"
+       environment:
+            - TAG="S3"
+            - SERVER_IP="192.168.42.33"
+
   haproxy:
        container_name: ha
        build:
